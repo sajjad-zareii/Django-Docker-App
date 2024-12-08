@@ -1,24 +1,26 @@
-# Django-Docker-App
-# syntax=docker/dockerfile:1
+# Django Application with Docker Support
 
-# Use a lightweight Python base image
-FROM python:3.9-slim
+This project is a Django-based web application designed to be containerized using Docker. It includes the necessary configuration for deploying the app in a containerized environment.
 
-# Set the working directory inside the container
-WORKDIR /app
+## Features
 
-# Copy the entire application code into the working directory
-COPY . .
+- Django framework for backend development.
+- Dockerized for easy deployment.
+- Pre-configured commands for migrations and static files.
 
-# Install Python dependencies (ensure requirements.txt is included in your project)
-RUN pip install --no-cache-dir -r requirements.txt
+## Prerequisites
 
-# Run migrations and collect static files (for production, you might handle these outside the Docker image)
-RUN python3 manage.py collectstatic --noinput
-RUN python3 manage.py migrate
+Before running the application, ensure you have the following installed:
 
-# Expose the port that Django will run on
-EXPOSE 8000
+- [Docker](https://www.docker.com/get-started)
+- [Docker Compose](https://docs.docker.com/compose/install/) (optional, if you use it)
 
-# Set the command to run the Django development server (replace with a production server in production)
-CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
+## Getting Started
+
+Follow these steps to set up and run the application:
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/your-username/your-repository-name.git
+cd your-repository-name
